@@ -1,0 +1,36 @@
+<div th:fragment="qr-code-text">
+    <div th:if="${qrCodeText != null}">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h5>Generate QR code for Text</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-floating" id="qrCodeText" method="POST" name="qrCodeText"
+                              th:action="@{/process/text}" th:object="${qrCodeText}">
+                            <div class="form-floating mb-4">
+                                <input autofocus="true" class="form-control is-invalid" form="qrCodeText"
+                                       id="textToBeEncoded"
+                                       name="textToBeEncoded"
+                                       required
+                                       th:field="*{textToBeEncoded}"
+                                       type="text"/>
+                                <label for="textToBeEncoded">Text:</label>
+
+                                <small class="form-text text-muted-error" id="textToBeEncodedHelp"
+                                       th:errors="*{textToBeEncoded}"
+                                       th:if="${#fields.hasErrors('textToBeEncoded')}"></small>
+
+                            </div>
+                            <button class="btn btn-primary btn-block" data-placement="top" data-toggle="tooltip"
+                                    title="generate QR Code">
+                                Generate &raquo;
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
